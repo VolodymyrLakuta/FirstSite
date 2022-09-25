@@ -12,6 +12,9 @@ class About(models.Model):
     description = models.TextField(max_length=1000)
     photo = models.ImageField(upload_to=get_file_name)
 
+    class Meta:
+        verbose_name_plural = "About"
+
 
 class BookTable(models.Model):
     name = models.CharField(max_length=100)
@@ -49,9 +52,10 @@ class DishesCategory(models.Model):
     position = models.SmallIntegerField(unique=True)
 
     def __str__(self):
-        return f"({self.title}: {self.position}"
+        return f"{self.title}: {self.position}"
 
     class Meta:
+        verbose_name_plural = "Dishes Categories"
         ordering = ("position", )
 
 
@@ -73,9 +77,10 @@ class Dish(models.Model):
     category = models.ForeignKey(DishesCategory, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"({self.title}: {self.position}"
+        return f"({self.category.title}: {self.title}: {self.position}"
 
     class Meta:
+        verbose_name_plural = "Dishes"
         ordering = ("position", )
 
 
