@@ -15,17 +15,6 @@ class About(models.Model):
     class Meta:
         verbose_name_plural = "About"
 
-
-class BookTable(models.Model):
-    name = models.CharField(max_length=100)
-    email = models.EmailField()
-    phone = models.CharField(max_length=20)
-    date = models.DateField()
-    time = models.TimeField()
-    people_numb = models.SmallIntegerField()
-    message = models.CharField(max_length=100)
-
-
 class Event(models.Model):
 
     def get_file_name(self, filename: str):
@@ -77,11 +66,27 @@ class Dish(models.Model):
     category = models.ForeignKey(DishesCategory, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"({self.category.title}: {self.title}: {self.position}"
+        return f"{self.category.title}: {self.title}: {self.position}"
 
     class Meta:
         verbose_name_plural = "Dishes"
         ordering = ("position", )
+
+class Gallery(models.Model):
+
+    def get_file_name(self, filename: str):
+        ext = filename.strip().split('.')[-1]
+        filename = f'{uuid.uuid4()}.{ext}'
+        return os.path.join('images/gallery/', filename)
+
+    photo = models.ImageField(upload_to=get_file_name)
+    is_visible = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name_plural = "Galleries"
+        
+
+
 
 
 

@@ -5,8 +5,8 @@ from .models import *
 admin.site.register(Dish)
 admin.site.register(DishesCategory)
 admin.site.register(Event)
-admin.site.register(BookTable)
 admin.site.register(About)
+admin.site.register(Gallery)
 
 
 
