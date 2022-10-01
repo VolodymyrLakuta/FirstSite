@@ -8,7 +8,41 @@
 
       <form action="" method="post" role="form" class="php-email-form">
         {% csrf_token %}
-        {{ user_booktable.as_p }}
+        <div class="row">
+          <div class="col-lg-4 col-md-6 form-group">
+          {{ user_booktable.name }}
+          <div class="validate"></div>
+          </div>
+          <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
+          {{ user_booktable.email }}
+            <div class="validate"></div>
+          </div>
+          <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
+          {{ user_booktable.phone }}
+            <div class="validate"></div>
+          </div>
+          <div class="col-lg-4 col-md-6 form-group mt-3">
+          {{ user_booktable.date }}
+            <div class="validate"></div>
+          </div>
+          <div class="col-lg-4 col-md-6 form-group mt-3">
+          {{ user_booktable.time }}
+            <div class="validate"></div>
+          </div>
+          <div class="col-lg-4 col-md-6 form-group mt-3">
+          {{ user_booktable.people_numb }}
+            <div class="validate"></div>
+          </div>
+        </div>
+        <div class="form-group mt-3">
+          {{ user_booktable.message }}
+          <div class="validate"></div>
+        </div>
+        <div class="mb-3">
+          <div class="loading">Loading</div>
+          <div class="error-message"></div>
+          <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
+        </div>
 
         
         <div class="text-center"><button type="submit">Send Message</button></div>
