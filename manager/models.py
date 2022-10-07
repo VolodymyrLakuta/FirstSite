@@ -1,4 +1,4 @@
-from xml.etree.ElementInclude import default_loader
+from tokenize import blank_re
 from django.db import models
 from django.core.validators import RegexValidator
 
@@ -6,7 +6,7 @@ from django.core.validators import RegexValidator
 
 class BookTable(models.Model):
 
-    mobile_re = RegexValidator(regex=r"^(\d{10})$", message="Wrong phone number")
+    mobile_re = RegexValidator(regex=r"^(\d{3}-\d{3}-\d{4})$", message="Wrong phone number")
 
     name = models.CharField(max_length=100)
     email = models.EmailField()
@@ -16,13 +16,13 @@ class BookTable(models.Model):
     people_numb = models.SmallIntegerField()
     message = models.TextField(max_length=300)
 
-    is_processed = models.BooleanField(default=False)
     date_in = models.DateTimeField(auto_now_add=True)
-
+    is_processed = models.BooleanField(default=False)
+    
     class Meta:
-        ordering = ('-date_in', )
+        ordering = ('date_in', )
 
     def __str__(self):
-        visual = f"/n{self.date_in} {self.name}, phone {self.phone}"
-        visual += f"/norder: {self.date} {self.time} people {self.people_numb} /n{self. message[:30]}"
+        visual = f"{self.date_in} {self.name}, phone {self.phone}, "
+        visual += f"{self.date} {self.time} people {self.people_numb} msg: {self. message[:30]}"
         return visual
