@@ -17,13 +17,15 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
-from .views import *
+from account.views import user_registration, user_login, user_logout
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/<str:name>', hello),
-    path('manager/', include('manager.urls')),
+    path('registration/', user_registration),
+    path('login/', user_login),
+    path('logout/', user_logout),
     path('', include('apps.urls')),
+    path('manager/', include('manager.urls'), name='manager')
     
 ]
 

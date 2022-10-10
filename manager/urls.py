@@ -1,9 +1,7 @@
-from django.urls import path
-from .views import *
+from django.urls import URLPattern, path
+from .views import reservation_list
 
 urlpatterns = [
-    path('add/', add),
-    path('delete/', delete),
-    path('edit/', edit),
-    
+    path('reservation/', reservation_list, )
+
 ]

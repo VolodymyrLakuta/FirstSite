@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.apps.AppsConfig',
     'manager.apps.ManagerConfig',
-    'user_message.apps.UserMessageConfig'
+    'user_message.apps.UserMessageConfig',
+    'account.apps.AccountConfig',
     
 ]
 

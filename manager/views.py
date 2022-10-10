@@ -1,10 +1,7 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
+from .models import BookTable
 
-def add(request):
-    return HttpResponse('manager add')
+def reservation_list(request):
+    lst = BookTable.objects.filter(is_processed=False)
+    return render(request, 'reservation_list.html', context={'lst': lst})
 
-def delete(request):
-    return HttpResponse('manager delete')
-
-def edit(request):
-    return HttpResponse('manager edit')
